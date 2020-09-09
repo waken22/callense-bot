@@ -16,5 +16,9 @@
     "voice"
   ],
   "author": "Jesé Ramon Barcones",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0"
+  }
 }
