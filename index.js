@@ -58,7 +58,7 @@ console.log('Using this token right now : \n', token)
 
 client.on('message', message => {
   let channelFound = false;
-  //if (message.member.permissions.missing('ADMINISTRATOR')) return;
+  //if (message.member.permissions.missing('MUTE_MEMBERS')) return;
   if (message.content.charAt(0) === '!') {
     let messageSplitted = message.content.split(' ');
     let command = messageSplitted[0];
@@ -69,6 +69,12 @@ client.on('message', message => {
         // iterate channels and find it by name and voice
         // iterate members and mute/active them
 
+       if(!message.member.hasPermission('MUTE_MEMBERS')){
+          message.delete();
+          message.reply('You do not have the permission to use the command!');
+          return;
+        }
+        
         const channels = message.guild.channels.cache;
         for (const [channelID, channel] of channels) {
           if (channel.name == param1 && channel.type === 'voice') {
